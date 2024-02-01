@@ -1,0 +1,19 @@
+/* Utilisation d'une image de fond */
+body {
+    background-image: url('./../../assets/marvel-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 100%;
+}
+
+.container {
+    width: 40%;
+    margin: 0px auto;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
