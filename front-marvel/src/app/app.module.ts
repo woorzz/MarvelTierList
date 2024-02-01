@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MainmenuComponent } from './mainmenu/mainmenu.component';
 
 import {MatRippleModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
@@ -16,6 +18,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   declarations: [
     AppComponent,
     HomeComponent,
+
+
+    NavbarComponent,
+    MainmenuComponent
+
   ],
   imports: [
     BrowserModule,
