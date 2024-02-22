@@ -21,16 +21,16 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
     NavbarComponent,
-    MainmenuComponent
+    MainmenuComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatCheckboxModule, 
-    FormsModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
+    MatCheckboxModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatRippleModule,
   ],
   providers: [

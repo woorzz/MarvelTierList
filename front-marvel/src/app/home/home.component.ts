@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -6,11 +7,14 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
-  centered = false;
-  disabled = false;
-  unbounded = false;
 
-  radius: number = 1;
-  color: string = "";
+
+export class HomeComponent {
+  constructor(private router: Router) { }
+
+  goToPage() {
+    this.router.navigate(['/mainmenu']);
+  }
+
+
 }
