@@ -1,5 +1,5 @@
 body {
-  background-color: #232323;
+  background-color: #ffffff;
   font-family: Futura, Times, serif;
   color: #1a1a1a;
   margin: 0;
@@ -11,20 +11,23 @@ main {
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
   justify-content: flex-start;
-  margin: 10px 0;
-  padding: 0 20px;
+  margin: 0px 0;
+  padding: 20px 20px;
 }
 
+h1 {
+  text-align: center;
+}
 .right-column {
   text-align: center;
-  /* background-color: rgba(50,50,50,0.5); */
-  /* padding: 10px; */
+  background-color: rgba(0, 0, 0, 0.783); 
+  padding: 10px; 
 }
 
 .draggables {
   height: 100%;
   text-align: left;
-  padding-top: 2px; /* shouldnt be necessary but it looks off without it */
+  padding-top: 2px;
 }
 
 .draggables .draggable {
@@ -55,7 +58,6 @@ main {
   grid-template-rows: auto;
   grid-gap: 10px;
   flex-direction: column;
-  /* background-color: #1a1a1a; */
 }
 
 .tier-row {
@@ -66,16 +68,11 @@ main {
 }
 
 .tier-row .dropzone {
-  min-height: 75px; /* should be as tall as the draggable items*/
+  min-height: 75px;
   display: flex;
   flex-wrap: wrap;
-  /* position: relative; */
   width: 100%;
   transition: background-color 0.3s ease;
-}
-
-.isdragging .dropzone {
-  box-shadow: 0 0 2px rgba(250,220,0, 0.2);
 }
 
 .tier-row .tier {
