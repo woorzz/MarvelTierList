@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-mainmenu',
   templateUrl: './mainmenu.component.html',
@@ -12,4 +13,9 @@ export class MainmenuComponent {
   goToPage() {
     this.router.navigate(['/tierlist']);
   }
+    
 }
+
+// app.component.ts
+
+
