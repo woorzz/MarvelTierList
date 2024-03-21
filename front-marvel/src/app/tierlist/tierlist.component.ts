@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
+import { ApiService } from '../api.service'; // Assurez-vous que le chemin d'importation est correct
 
 @Component({
   selector: 'app-tierlist',
@@ -9,9 +10,12 @@ export class TierlistComponent implements AfterViewInit {
   @ViewChildren('draggable', { read: ElementRef }) draggables!: QueryList<ElementRef>;
   @ViewChildren('dropzone', { read: ElementRef }) dropzones!: QueryList<ElementRef>;
 
+  constructor(private apiService: ApiService) { }
+
   ngAfterViewInit(): void {
     console.log('Initialisation du glisser-déposer');
     this.initDragAndDrop();
+    this.loadData();
   }
 
   initDragAndDrop(): void {
@@ -60,6 +64,18 @@ export class TierlistComponent implements AfterViewInit {
         console.log('Déposé en dehors d\'une zone de dépôt valide, annulation du dépôt');
       }
     }
+  }
+
+  loadData(): void {
+    this.apiService.getData().subscribe({
+      next: (data) => {
+        console.log('Données reçues:', data);
+        // Traitez ici les données reçues de l'API
+      },
+      error: (error) => {
+        console.error('Erreur lors de la récupération des données:', error);
+      }
+    });
   }
   
 }
