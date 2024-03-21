@@ -1,4 +1,4 @@
-require('dotenv').config(); 
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors'); // Importez le package cors
@@ -6,14 +6,16 @@ const cors = require('cors'); // Importez le package cors
 const app = express();
 const PORT = 3000;
 
+const publicKey = process.env.PUBLIC_KEY;
+const privateKey = process.env.PRIVATE_KEY;
+const timestamp = new Date().getTime();
+const hash = require('crypto').createHash('md5').update(timestamp + privateKey + publicKey).digest('hex');
+
 app.use(cors());
 
 app.get('/marvel/spider', async (req, res) => {
   try {
-    const publicKey = process.env.PUBLIC_KEY;
-    const privateKey = process.env.PRIVATE_KEY;
-    const timestamp = new Date().getTime();
-    const hash = require('crypto').createHash('md5').update(timestamp + privateKey + publicKey).digest('hex');
+
     
     const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${publicKey}&hash=${hash}&limit=100&nameStartsWith=Spider`);
 
@@ -35,10 +37,6 @@ app.get('/marvel/spider', async (req, res) => {
 
 app.get('/marvel/search/:characterName', async (req, res) => {
   try {
-    const publicKey = process.env.PUBLIC_KEY;
-    const privateKey = process.env.PRIVATE_KEY;
-    const timestamp = new Date().getTime();
-    const hash = require('crypto').createHash('md5').update(timestamp + privateKey + publicKey).digest('hex');
     
     const characterName = req.params.characterName;
 
@@ -61,7 +59,7 @@ app.get('/marvel/search/:characterName', async (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Serveur backend démarré sur le port ${PORT}`);
+  console.log(`Serveur démarré sur le port ${PORT}`);
 });
 
 
