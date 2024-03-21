@@ -1,5 +1,5 @@
 <body>
-  <h1>Tier List Marvel [TitreDeLaTierList]</h1>
+  <h1>Tier List Marvel Spider</h1>
   <main>
     <article class="tier-list">
       <section class='tier-row'> <div class='tier tier-s'>S</div> <div class='dropzone' #dropzone></div></section>
@@ -10,14 +10,27 @@
       <section class='tier-row'> <div class='tier tier-e'>E</div> <div class='dropzone' #dropzone></div></section>
       <section class='tier-row'> <div class='tier tier-f'>F</div> <div class='dropzone' #dropzone></div></section>
     </article>
+
+    <!--<button (click)="addTierColumn()">Ajouter une colonne</button>
+
+    <article class="tier-list">
+      <section *ngFor="let tier of tiers; let i = index" class='tier-row'>
+        <div class='tier' [class]="'tier-' + tier.name">{{tier.name}}</div>
+        <div class='dropzone' #dropzone></div>
+      </section>
+    </article> -->
   
     <article class="right-column">
       <div class="draggables">
-        <div id="draggable1" class="draggable" #draggable style="background-image: url('https://i.etsystatic.com/13702629/r/il/067798/1979047720/il_fullxfull.1979047720_kthx.jpg')"></div>
-        <div id="draggable2" class="draggable" #draggable style="background-image: url('https://i.etsystatic.com/13702629/r/il/067798/1979047720/il_fullxfull.1979047720_kthx.jpg')"></div>
-        <div id="draggable3" class="draggable" #draggable style="background-image: url('https://i.etsystatic.com/13702629/r/il/067798/1979047720/il_fullxfull.1979047720_kthx.jpg')"></div>
-        <div id="draggable4" class="draggable" #draggable style="background-image: url('https://i.etsystatic.com/13702629/r/il/067798/1979047720/il_fullxfull.1979047720_kthx.jpg')"></div>
+        <div *ngFor="let character of characters; let i = index"
+             [attr.id]="'draggable' + (i + 1)"
+             #draggable
+             class="draggable"
+             [style.background-image]="'url(' + character.thumbnail + ')'"
+             draggable="true">
+        </div>
       </div>
+      
     </article>
   </main>
 </body>

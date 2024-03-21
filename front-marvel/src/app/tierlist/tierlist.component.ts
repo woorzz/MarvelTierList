@@ -7,6 +7,17 @@ import { ApiService } from '../api.service'; // Assurez-vous que le chemin d'imp
   styleUrls: ['./tierlist.component.scss'],
 })
 export class TierlistComponent implements AfterViewInit {
+  characters: any[] = [];
+ // tiers = [
+ //   { name: 'S' },
+ //   { name: 'A' },
+ //   { name: 'B' },
+ //   { name: 'C' },
+ //   { name: 'D' },
+ //   { name: 'E' },
+ //   { name: 'F' },
+ // ];
+ 
   @ViewChildren('draggable', { read: ElementRef }) draggables!: QueryList<ElementRef>;
   @ViewChildren('dropzone', { read: ElementRef }) dropzones!: QueryList<ElementRef>;
 
@@ -18,6 +29,13 @@ export class TierlistComponent implements AfterViewInit {
     this.loadData();
   }
 
+  //addTierColumn(): void {
+    //const nextTierName = prompt("Nom de la nouvelle colonne :");
+    //if (nextTierName) {
+    //  this.tiers.push({ name: nextTierName });
+    //}
+  //}
+  
   initDragAndDrop(): void {
     this.draggables.forEach((draggable, index) => {
       const element = draggable.nativeElement;
@@ -69,13 +87,17 @@ export class TierlistComponent implements AfterViewInit {
   loadData(): void {
     this.apiService.getData().subscribe({
       next: (data) => {
-        console.log('Données reçues:', data);
-        // Traitez ici les données reçues de l'API
+        this.characters = data;
+        console.log('Données récupérées:', this.characters);
+        setTimeout(() => {
+          this.initDragAndDrop();
+        });
       },
-      error: (error) => {
-        console.error('Erreur lors de la récupération des données:', error);
-      }
+      error: (error) => console.error('Erreur lors de la récupération des données:', error)
     });
+    
   }
+  
+  
   
 }

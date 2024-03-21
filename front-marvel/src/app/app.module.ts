@@ -14,6 +14,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { TierlistComponent } from './tierlist/tierlist.component'; // Assurez-vous que le chemin est correct
+
 
 @NgModule({
   declarations: [
@@ -21,11 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     MainmenuComponent,
+    TierlistComponent ,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     MatCheckboxModule,
     FormsModule,
     MatFormFieldModule,

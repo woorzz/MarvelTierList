@@ -1,10 +1,12 @@
-
 require('dotenv').config(); 
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors'); // Importez le package cors
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors());
 
 app.get('/marvel/spider', async (req, res) => {
   try {

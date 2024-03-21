@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'https://jsonplaceholder.typicode.com/';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/todos/1`);
+    return this.http.get(`${this.apiUrl}/marvel/spider`);
   }
 
 }
