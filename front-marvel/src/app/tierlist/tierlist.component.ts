@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChildren,
+  AfterViewInit,
+} from '@angular/core';
 import { ApiService } from '../api.service'; // Assurez-vous que le chemin d'importation est correct
 
 @Component({
@@ -8,20 +15,22 @@ import { ApiService } from '../api.service'; // Assurez-vous que le chemin d'imp
 })
 export class TierlistComponent implements AfterViewInit {
   characters: any[] = [];
- // tiers = [
- //   { name: 'S' },
- //   { name: 'A' },
- //   { name: 'B' },
- //   { name: 'C' },
- //   { name: 'D' },
- //   { name: 'E' },
- //   { name: 'F' },
- // ];
- 
-  @ViewChildren('draggable', { read: ElementRef }) draggables!: QueryList<ElementRef>;
-  @ViewChildren('dropzone', { read: ElementRef }) dropzones!: QueryList<ElementRef>;
+  tiers = [
+    { name: 'S' },
+    { name: 'A' },
+    { name: 'B' },
+    { name: 'C' },
+    { name: 'D' },
+    { name: 'E' },
+    { name: 'F' },
+  ];
 
-  constructor(private apiService: ApiService) { }
+  @ViewChildren('draggable', { read: ElementRef })
+  draggables!: QueryList<ElementRef>;
+  @ViewChildren('dropzone', { read: ElementRef })
+  dropzones!: QueryList<ElementRef>;
+
+  constructor(private apiService: ApiService) {}
 
   ngAfterViewInit(): void {
     console.log('Initialisation du glisser-déposer');
@@ -29,13 +38,13 @@ export class TierlistComponent implements AfterViewInit {
     this.loadData();
   }
 
-  //addTierColumn(): void {
-    //const nextTierName = prompt("Nom de la nouvelle colonne :");
-    //if (nextTierName) {
-    //  this.tiers.push({ name: nextTierName });
-    //}
-  //}
-  
+  addTierColumn(): void {
+    const nextTierName = prompt('Nom de la nouvelle colonne :');
+    if (nextTierName) {
+      this.tiers.push({ name: nextTierName });
+    }
+  }
+
   initDragAndDrop(): void {
     this.draggables.forEach((draggable, index) => {
       const element = draggable.nativeElement;
@@ -57,7 +66,6 @@ export class TierlistComponent implements AfterViewInit {
     const id = (event.target as HTMLElement).id; // Récupérer l'id de l'élément
     event.dataTransfer?.setData('text/plain', id);
   }
-  
 
   onDragOver(event: DragEvent): void {
     event.preventDefault(); // Nécessaire pour permettre le dépôt
@@ -77,9 +85,13 @@ export class TierlistComponent implements AfterViewInit {
       const dropzone = event.target.closest('.dropzone');
       if (dropzone) {
         dropzone.appendChild(draggableElement);
-        console.log(`Élément [${draggableId}] déplacé vers la nouvelle zone de dépôt`);
+        console.log(
+          `Élément [${draggableId}] déplacé vers la nouvelle zone de dépôt`
+        );
       } else {
-        console.log('Déposé en dehors d\'une zone de dépôt valide, annulation du dépôt');
+        console.log(
+          "Déposé en dehors d'une zone de dépôt valide, annulation du dépôt"
+        );
       }
     }
   }
@@ -93,11 +105,8 @@ export class TierlistComponent implements AfterViewInit {
           this.initDragAndDrop();
         });
       },
-      error: (error) => console.error('Erreur lors de la récupération des données:', error)
+      error: (error) =>
+        console.error('Erreur lors de la récupération des données:', error),
     });
-    
   }
-  
-  
-  
 }
