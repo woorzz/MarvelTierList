@@ -20,8 +20,8 @@ h1 {
 }
 .right-column {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.783); 
-  padding: 10px; 
+  background-color: rgba(0, 0, 0, 0.783);
+  padding: 10px;
 }
 
 .draggables {
@@ -102,7 +102,7 @@ h1 {
   background-color: #7ebfff;
 }
 .tier-row .tier-e {
-  background-color: #807FFF;
+  background-color: #807fff;
 }
 .tier-row .tier-f {
   background-color: #ff7fff;
@@ -114,4 +114,14 @@ footer {
   margin-top: 10px;
   text-align: center;
   color: #eee;
+}
+
+button.btn-param-right.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
+  color: white !important;
+}
+
+.center-icon {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

@@ -1,46 +1,25 @@
 <body>
   <h1>Tier List Marvel Spider</h1>
   <main>
-    <!-- <article class="tier-list">
-      <section class="tier-row">
-        <div class="tier tier-s">S</div>
-        <div class="dropzone" #dropzone></div>
-      </section>
-      <section class="tier-row">
-        <div class="tier tier-a">A</div>
-        <div class="dropzone" #dropzone></div>
-      </section>
-      <section class="tier-row">
-        <div class="tier tier-b">B</div>
-        <div class="dropzone" #dropzone></div>
-      </section>
-      <section class="tier-row">
-        <div class="tier tier-c">C</div>
-        <div class="dropzone" #dropzone></div>
-      </section>
-      <section class="tier-row">
-        <div class="tier tier-d">D</div>
-        <div class="dropzone" #dropzone></div>
-      </section>
-      <section class="tier-row">
-        <div class="tier tier-e">E</div>
-        <div class="dropzone" #dropzone></div>
-      </section>
-      <section class="tier-row">
-        <div class="tier tier-f">F</div>
-        <div class="dropzone" #dropzone></div>
-      </section>
-    </article> -->
-
     <button (click)="addTierColumn()">Ajouter une colonne</button>
-
     <article class="tier-list">
       <section *ngFor="let tier of tiers; let i = index" class="tier-row">
+        <!-- Colonne Tier -->
         <div class="tier" [class]="'tier-' + tier.name">{{ tier.name }}</div>
+        <!-- Bouton Paramètre à droite -->
+
         <div class="dropzone" #dropzone></div>
+        <div class="center-icon">
+          <button
+            mat-icon-button
+            class="btn-param-right"
+            (click)="editTierName(i, 'right')"
+          >
+            <mat-icon>settings</mat-icon>
+          </button>
+        </div>
       </section>
     </article>
-
     <article class="right-column">
       <div class="draggables dropzone" #dropzone>
         <div

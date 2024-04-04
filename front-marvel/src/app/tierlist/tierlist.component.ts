@@ -7,6 +7,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { ApiService } from '../api.service'; // Assurez-vous que le chemin d'importation est correct
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-tierlist',
@@ -42,6 +43,14 @@ export class TierlistComponent implements AfterViewInit {
     const nextTierName = prompt('Nom de la nouvelle colonne :');
     if (nextTierName) {
       this.tiers.push({ name: nextTierName });
+    }
+  }
+
+  editTierName(index: number, side: 'left' | 'right'): void {
+    const currentTierName = this.tiers[index].name;
+    const newTierName = prompt('Nouveau nom de la colonne :', currentTierName);
+    if (newTierName) {
+      this.tiers[index].name = newTierName;
     }
   }
 
