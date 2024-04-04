@@ -44,6 +44,9 @@ export class TierlistComponent implements AfterViewInit {
     if (nextTierName) {
       this.tiers.push({ name: nextTierName });
     }
+    setTimeout(() => {
+      this.initDragAndDrop();
+    });
   }
 
   editTierName(index: number, side: 'left' | 'right'): void {
