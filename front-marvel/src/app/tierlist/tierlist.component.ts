@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { ApiService } from '../api.service'; // Assurez-vous que le chemin d'importation est correct
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tierlist',
@@ -26,17 +27,36 @@ export class TierlistComponent implements AfterViewInit {
     { name: 'F' },
   ];
 
+  recherche: string = '';
+
   @ViewChildren('draggable', { read: ElementRef })
   draggables!: QueryList<ElementRef>;
   @ViewChildren('dropzone', { read: ElementRef })
   dropzones!: QueryList<ElementRef>;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private http: HttpClient) {}
 
   ngAfterViewInit(): void {
     console.log('Initialisation du glisser-déposer');
     this.initDragAndDrop();
     this.loadData();
+  }
+  searchBar(): void {
+    console.log('Contenu de la recherche:', this.recherche);
+    let array: any[] = [];
+
+    this.http
+      .get<any[]>('http://localhost:3000/marvel/search/' + this.recherche)
+      .subscribe(
+        (response) => {
+          console.log('Résultat de la recherche:', response);
+          array = response;
+          this.characters.push(array[0]);
+        },
+        (error) => {
+          console.error('Erreur lors de la recherche:', error);
+        }
+      );
   }
 
   addTierColumn(): void {
