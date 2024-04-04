@@ -125,3 +125,15 @@ button.btn-param-right.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-
   justify-content: center;
   flex-direction: column;
 }
+
+.search-bar-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  /* margin: 150px; */
+  margin-right: 50px;
+  margin-left: 50px;
+}

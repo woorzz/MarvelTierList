@@ -17,6 +17,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TierlistComponent implements AfterViewInit {
   characters: any[] = [];
+  aucunResultatTrouve: boolean = false;
+
   tiers = [
     { name: 'S' },
     { name: 'A' },
@@ -43,15 +45,22 @@ export class TierlistComponent implements AfterViewInit {
   }
   searchBar(): void {
     console.log('Contenu de la recherche:', this.recherche);
-    let array: any[] = [];
+    let list = [];
 
     this.http
       .get<any[]>('http://localhost:3000/marvel/search/' + this.recherche)
       .subscribe(
         (response) => {
-          console.log('Résultat de la recherche:', response);
-          array = response;
-          this.characters.push(array[0]);
+          if (response.length === 0) {
+            console.log('Aucun résultat trouvé');
+            this.aucunResultatTrouve = true;
+          } else {
+            list = response;
+            this.aucunResultatTrouve = true;
+            this.characters.push(list[0]);
+            this.aucunResultatTrouve = false;
+            console.log('Résultat de la recherche:', response);
+          }
         },
         (error) => {
           console.error('Erreur lors de la recherche:', error);

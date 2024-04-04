@@ -1,19 +1,25 @@
 <body>
   <h1>Tier List Marvel Spider</h1>
-  <main>
+
+  <div class="search-bar-button-container">
     <mat-form-field class="search-bar">
       <input matInput placeholder="Rechercher..." [(ngModel)]="recherche" />
       <button mat-button matSuffix (click)="searchBar()">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
+    <div *ngIf="aucunResultatTrouve" class="aucun-resultat">
+      Aucun résultat trouvé pour la recherche "{{ recherche }}"
+    </div>
+    <button mat-raised-button color="primary" (click)="addTierColumn()">
+      Ajouter une colonne
+    </button>
+  </div>
 
-    <button (click)="addTierColumn()">Ajouter une colonne</button>
+  <main>
     <article class="tier-list">
       <section *ngFor="let tier of tiers; let i = index" class="tier-row">
-        <!-- Colonne Tier -->
         <div class="tier" [class]="'tier-' + tier.name">{{ tier.name }}</div>
-        <!-- Bouton Paramètre à droite -->
 
         <div class="dropzone" #dropzone></div>
         <div class="center-icon">
