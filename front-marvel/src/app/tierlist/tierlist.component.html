@@ -42,7 +42,7 @@
     </article>
 
     <article class="right-column">
-      <div class="draggables">
+      <div class="draggables dropzone" #dropzone>
         <div
           *ngFor="let character of characters; let i = index"
           [attr.id]="'draggable' + (i + 1)"
