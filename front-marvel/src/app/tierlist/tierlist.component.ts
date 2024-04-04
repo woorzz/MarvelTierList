@@ -6,7 +6,7 @@ import {
   ViewChildren,
   AfterViewInit,
 } from '@angular/core';
-import { ApiService } from '../api.service'; // Assurez-vous que le chemin d'importation est correct
+import { ApiService } from '../api.service';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
 
@@ -125,7 +125,6 @@ export class TierlistComponent implements AfterViewInit {
     }
     const draggableElement = document.getElementById(draggableId);
     if (draggableElement && event.target instanceof HTMLElement) {
-      // S'assurer que la cible du dépôt est une zone de dépôt
       const dropzone = event.target.closest('.dropzone');
       if (dropzone) {
         dropzone.appendChild(draggableElement);
