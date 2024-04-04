@@ -61,6 +61,9 @@ export class TierlistComponent implements AfterViewInit {
             this.aucunResultatTrouve = false;
             console.log('Résultat de la recherche:', response);
           }
+          setTimeout(() => {
+            this.initDragAndDrop();
+          });
         },
         (error) => {
           console.error('Erreur lors de la recherche:', error);
